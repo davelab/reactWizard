@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import '../scss/components/statusbar.scss';
 
 export default class StatusBar extends Component {
     constructor(props) {

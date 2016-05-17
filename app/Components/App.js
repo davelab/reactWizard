@@ -1,6 +1,6 @@
 import React from 'react';
-import Wizard from './Wizard.jsx';
-import { Steps } from './steps/index.jsx';
+import Wizard from './Wizard';
+import { Steps } from './steps/index';
 
 export default class App extends React.Component {
     render() {

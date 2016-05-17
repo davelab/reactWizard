@@ -1,25 +1,42 @@
 {
-  "name": "Wizard",
+  "name": "wizard",
   "version": "1.0.0",
-  "description": "Wizard component in react",
-  "main": "index.js",
-  "author": "Davide Cariani",
-  "license": "ISC",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start" : "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-react": "^6.5.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.0.0",
-    "gulp": "^3.9.1",
-    "gulp-util": "^3.0.7",
-    "vinyl-source-stream": "^1.1.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davelab/reactWizard.git"
   },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davelab/reactWizard/issues"
+  },
+  "homepage": "https://github.com/davelab/reactWizard#readme",
   "dependencies": {
-    "express": "^4.13.4",
+    "babel-polyfill": "^6.8.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "css-loader": "^0.23.1",
+    "express": "^4.13.4",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.7.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
   }
 }

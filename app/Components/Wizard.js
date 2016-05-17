@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import StatusBar from './StatusBar.jsx';
+import StatusBar from './StatusBar';
 
 export default class Wizard extends Component {
 

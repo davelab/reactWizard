@@ -1,0 +1,11 @@
+.status-bar-wrapper {
+    height: 12px;
+    width: 100%;
+    background-color: lightgrey;
+    > div {
+        height: 12px;
+        background-color: greenyellow;
+        width: 0;
+        transition: width .5s;
+    }
+}
