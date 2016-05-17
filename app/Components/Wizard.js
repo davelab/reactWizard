@@ -3,12 +3,9 @@ import StatusBar from './StatusBar';
 
 export default class Wizard extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         this.stepCount =  this.props.steps.length;
-        this.state = {
-            currentStep: 1
-        };
 
         this.hidden = {
             display: 'none'
@@ -16,26 +13,26 @@ export default class Wizard extends Component {
     }
 
     isFinalStep() {
-        return this.stepCount === this.state.currentStep;
+        return this.stepCount === this.state;
     }
 
     isFirstStep() {
-        return this.state.currentStep === 1
+        return this.state === 1
     }
 
     handleBack() {
-        this.setState({ currentStep: this.state.currentStep - 1 });
+        this.props.action.onPrevStep()
     }
 
     handleNext() {
-        this.setState({ currentStep: this.state.currentStep + 1 });
+        this.props.action.onNextStep()
     }
 
     render() {
         return (
             <div>
-                { this.props.steps[this.state.currentStep - 1].component }
-                { this.props.showStatusBar ? <StatusBar status={ this.state.currentStep } maxStatus={ this.stepCount } /> : '' }
+                { this.props.steps[this.state - 1].component }
+                { this.props.showStatusBar ? <StatusBar status={ this.state } maxStatus={ this.stepCount } /> : '' }
                 <button onClick={ this.handleBack.bind(this) } style={ this.isFirstStep() ? this.hidden: {} }>Back</button>
                 <button onClick={ this.handleNext.bind(this) } style={ this.isFinalStep() ? this.hidden : {} }>Next</button>
             </div>
@@ -44,5 +41,5 @@ export default class Wizard extends Component {
 }
 
 Wizard.defaultProps = {
-    showStatusBar: true
+    showStatusBar: false
 }
