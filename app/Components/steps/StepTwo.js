@@ -8,7 +8,7 @@ export default class StepTwo extends Component {
 
     render() {
         return (
-            <div>this is step2</div>
+            <div>this is step 2</div>
         )
     }
 }

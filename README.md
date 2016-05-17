@@ -1,0 +1,1 @@
+Simple wizard component builded with react, it can be used for long forms

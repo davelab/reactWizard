@@ -1,7 +1,7 @@
 {
   "name": "wizard",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple wizard component builded with react, it can be used for long forms",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/davelab/reactWizard.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Davide Cariani",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/davelab/reactWizard/issues"
   },
