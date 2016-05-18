@@ -1,45 +1,37 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import StatusBar from './StatusBar';
+import Steps from './steps'
 
-export default class Wizard extends Component {
+const Wizard = ( { wizardStep, onNextStep, onPrevStep } ) => {
 
-    constructor(props, context) {
-        super(props, context);
-        this.stepCount =  this.props.steps.length;
+    const stepCount =  Steps.length,
+          hidden = {
+                display: 'none'
+          };
 
-        this.hidden = {
-            display: 'none'
-        }
+    this.isFinalStep = () => {
+        return stepCount === wizardStep;
     }
 
-    isFinalStep() {
-        return this.stepCount === this.state;
+    this.isFirstStep = () => {
+        return wizardStep === 1
     }
 
-    isFirstStep() {
-        return this.state === 1
-    }
-
-    handleBack() {
-        this.props.action.onPrevStep()
-    }
-
-    handleNext() {
-        this.props.action.onNextStep()
-    }
-
-    render() {
-        return (
-            <div>
-                { this.props.steps[this.state - 1].component }
-                { this.props.showStatusBar ? <StatusBar status={ this.state } maxStatus={ this.stepCount } /> : '' }
-                <button onClick={ this.handleBack.bind(this) } style={ this.isFirstStep() ? this.hidden: {} }>Back</button>
-                <button onClick={ this.handleNext.bind(this) } style={ this.isFinalStep() ? this.hidden : {} }>Next</button>
-            </div>
-        )
-    }
+    return (
+        <div>
+            { Steps[wizardStep - 1].component }
+            <button onClick={ () => { onPrevStep() } } style={ this.isFirstStep() ? hidden : {} }>Back</button>
+            <button onClick={ () => { onNextStep() } } style={ this.isFinalStep() ? hidden : {} }>Next</button>
+        </div>
+    )
 }
 
-Wizard.defaultProps = {
-    showStatusBar: false
+Wizard.PropTypes = {
+    wizardStep: PropTypes.number.isRequired,
+    steps : PropTypes.array.isRequired,
+    onNextStep : PropTypes.func.isRequired,
+    onPrevStep : PropTypes.func.isRequired
 }
+
+export default Wizard;
+

@@ -2,17 +2,16 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
-import reducer from './reducers'
+import wizardReducer from './reducers'
 import { Provider } from 'react-redux'
 // Components
 import wizardContainer from './Containers/wizardContainer'
-import { Steps } from './Components/steps'
 
-const store = createStore(reducer);
+const store = createStore(wizardReducer, window.devToolsExtension ? window.devToolsExtension() : undefined);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <wizardContainer steps={ Steps } />
+    <Provider store={ store }>
+        <wizardContainer />
     </Provider>,
     document.getElementById('App')
 );

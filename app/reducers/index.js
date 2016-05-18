@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 import wizard from './wizard'
 
-export default combineReducers({
+const wizardReducer = combineReducers({
     wizard
 });
+
+export default wizardReducer;

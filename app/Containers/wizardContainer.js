@@ -1,23 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import Wizard from '../Components/Wizard';
+import { nextStep, prevStep } from '../actions'
+import Wizard from '../Components/Wizard'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        state,
-        ownProps
+        wizardStep: state.wizard
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onNextStep: () => {
-            dispatch({ type: 'NEXT_STEP'})
+            dispatch(nextStep())
         },
         onPrevStep: () => {
-            dispatch({ type: 'PREV_STEP'})
+            dispatch(prevStep())
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Wizard);
+const wizardContainer = connect(mapStateToProps, mapDispatchToProps)(Wizard);
+
+export default wizardContainer;
+
+
+
