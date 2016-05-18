@@ -2,26 +2,27 @@ import React, { PropTypes } from 'react';
 import StatusBar from './StatusBar';
 import Steps from './steps'
 
-const Wizard = ( { wizardStep, onNextStep, onPrevStep } ) => {
+const Wizard = ( { currentStatus, onNextStep, onPrevStep } ) => {
 
     const stepCount =  Steps.length,
           hidden = {
                 display: 'none'
           };
 
-    this.isFinalStep = () => {
-        return stepCount === wizardStep;
+    const isFinalStep = () => {
+        return stepCount === currentStatus;
     }
 
-    this.isFirstStep = () => {
-        return wizardStep === 1
+    const isFirstStep = () => {
+        return currentStatus === 1
     }
 
     return (
         <div>
-            { Steps[wizardStep - 1].component }
-            <button onClick={ () => { onPrevStep() } } style={ this.isFirstStep() ? hidden : {} }>Back</button>
-            <button onClick={ () => { onNextStep() } } style={ this.isFinalStep() ? hidden : {} }>Next</button>
+            { Steps[currentStatus - 1].component }
+            <StatusBar currentStatus={ currentStatus } maxStatus={ stepCount } />
+            <button onClick={ () => { onPrevStep() } } style={ isFirstStep() ? hidden : {} }>Back</button>
+            <button onClick={ () => { onNextStep() } } style={ isFinalStep() ? hidden : {} }>Next</button>
         </div>
     )
 }

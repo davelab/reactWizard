@@ -4,14 +4,15 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import wizardReducer from './reducers'
 import { Provider } from 'react-redux'
+
 // Components
-import wizardContainer from './Containers/wizardContainer'
+import WizardContainer from './Containers/WizardContainer'
 
 const store = createStore(wizardReducer, window.devToolsExtension ? window.devToolsExtension() : undefined);
 
 ReactDOM.render(
     <Provider store={ store }>
-        <wizardContainer />
+        <WizardContainer />
     </Provider>,
     document.getElementById('App')
 );

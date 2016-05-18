@@ -5,12 +5,12 @@ export default class StatusBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            statusBar: this.percentageStatus(this.props.status)
+            statusBar: this.percentageStatus(this.props.currentStatus)
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({ statusBar: this.percentageStatus(nextProps.status) });
+        this.setState({ statusBar: this.percentageStatus(nextProps.currentStatus) });
     }
 
     percentageStatus(status) {
@@ -28,4 +28,9 @@ export default class StatusBar extends Component {
 
         )
     }
+}
+
+StatusBar.PropTypes = {
+    currentStatus : PropTypes.number.isRequired,
+    maxStatus : PropTypes.number.isRequired
 }

@@ -5,7 +5,7 @@ import Wizard from '../Components/Wizard'
 
 const mapStateToProps = (state) => {
     return {
-        wizardStep: state.wizard
+        currentStatus: state.wizard
     }
 }
 
@@ -20,9 +20,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const wizardContainer = connect(mapStateToProps, mapDispatchToProps)(Wizard);
+const WizardContainer = connect(mapStateToProps, mapDispatchToProps)(Wizard);
 
-export default wizardContainer;
+export default WizardContainer;
 
 
 
