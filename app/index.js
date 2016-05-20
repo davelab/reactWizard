@@ -6,13 +6,13 @@ import wizardReducer from './reducers'
 import { Provider } from 'react-redux'
 
 // Components
-import WizardContainer from './Containers/WizardContainer'
+import WizardContainer from './Components/Wizard'
 
 const store = createStore(wizardReducer, window.devToolsExtension ? window.devToolsExtension() : undefined);
 
 ReactDOM.render(
     <Provider store={ store }>
-        <WizardContainer />
+        <WizardContainer statusBar={ false } />
     </Provider>,
     document.getElementById('App')
 );

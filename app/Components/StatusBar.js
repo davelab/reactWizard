@@ -1,36 +1,26 @@
-import React, { Component, PropTypes } from 'react';
-import '../scss/components/statusbar.scss';
+import React from 'react'
+import { connect } from 'react-redux'
+import '../scss/components/statusbar.scss'
 
-export default class StatusBar extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            statusBar: this.percentageStatus(this.props.currentStatus)
-        };
-    }
+const StatusBar = ( { currentStep, maxSteps } ) => {
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({ statusBar: this.percentageStatus(nextProps.currentStatus) });
-    }
+    const style = { width : (currentStep / maxSteps  * 100) + '%' }
 
-    percentageStatus(status) {
-        return  status / this.props.maxStatus  * 100;
-    }
+    return (
+        <div className="status-bar-wrapper">
+            <div style={ style } ></div>
+        </div>
+    )
 
-    render() {
-        this.style = {
-            width : this.state.statusBar + '%'
-        }
-        return (
-            <div className="status-bar-wrapper">
-                <div style={ this.style } ></div>
-            </div>
+}
 
-        )
+const mapStateToProps = (state, ownProps) => {
+    return {
+        currentStep: state.wizard,
+        maxSteps: ownProps.maxSteps
     }
 }
 
-StatusBar.PropTypes = {
-    currentStatus : PropTypes.number.isRequired,
-    maxStatus : PropTypes.number.isRequired
-}
+const StatusBarContainer = connect(mapStateToProps)(StatusBar)
+
+export default StatusBarContainer;
