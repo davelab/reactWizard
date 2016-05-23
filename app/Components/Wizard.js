@@ -3,8 +3,10 @@ import StatusBarContainer  from './StatusBar';
 import Steps from './steps'
 import { connect } from 'react-redux'
 import { nextStep, prevStep } from '../actions'
+import '../scss/components/wizard.scss'
 
-const Wizard = ( { currentStep, onNextStep, onPrevStep, statusBar} ) => {
+
+const Wizard = ( { currentStep, onNextStep, onPrevStep, statusBar } ) => {
 
     const maxSteps =  Steps.length,
           hidden = {
@@ -20,11 +22,15 @@ const Wizard = ( { currentStep, onNextStep, onPrevStep, statusBar} ) => {
     }
 
     return (
-        <div>
-            { Steps[currentStep - 1].component }
+        <div className="wizard">
+            <div className="hp">
+                { Steps[currentStep - 1].component }
+            </div>
             { statusBar ?  <StatusBarContainer maxSteps={ maxSteps } /> : '' }
-            <button onClick={ () => { onPrevStep() } } style={ isFirstStep() ? hidden : {} }>Back</button>
-            <button onClick={ () => { onNextStep() } } style={ isFinalStep() ? hidden : {} }>Next</button>
+            <div className="hp">
+                <button onClick={ () => { onPrevStep() } } style={ isFirstStep() ? hidden : {} } className="btn-back">Back</button>
+                <button onClick={ () => { onNextStep() } } style={ isFinalStep() ? hidden : {} } className="btn-next">Next</button>
+            </div>
         </div>
     )
 }

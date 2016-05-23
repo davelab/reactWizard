@@ -1,14 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class StepThree extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    render() {
-        return (
-            <div>this is StepThree</div>
-        )
-    }
+const StepThree = () => {
+    return(
+        <div>
+            <h3>STEP THREE</h3>
+        </div>
+    )
 }
+
+export default StepThree
